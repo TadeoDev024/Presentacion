@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #0d1117;
+  color: #e6edf3;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  padding: 60px 20px 20px;
+  .contact-btn {
+  display: inline-block;
+  background: #58a6ff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: background 0.3s;
+}
+
+.contact-btn:hover {
+  background: #1f6feb;
+}
+
+}
+
+h1 {
+  font-size: 3em;
+  color: #58a6ff;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  color: #8b949e;
+}
+
+section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+h2 {
+  border-left: 4px solid #58a6ff;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.2s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: #58a6ff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+input, textarea {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  color: #e6edf3;
+  padding: 10px;
+  font-size: 1em;
+}
+
+button {
+  background: #58a6ff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 12px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #1f6feb;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.9em;
+  color: #8b949e;
+  border-top: 1px solid #30363d;
+}
