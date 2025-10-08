@@ -9,6 +9,7 @@ body {
 header {
   text-align: center;
   padding: 60px 20px 20px;
+<<<<<<< HEAD
   .contact-btn {
   display: inline-block;
   background: #58a6ff;
@@ -25,6 +26,8 @@ header {
   background: #1f6feb;
 }
 
+=======
+>>>>>>> 2a0a2b1acdf08819f11f0d1b69ee615c331670a7
 }
 
 h1 {
