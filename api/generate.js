@@ -23,10 +23,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "El prompt está vacío." });
   }
 
-  const promptCompleto = `
-    Toma la siguiente idea y conviértela en una descripción de proyecto profesional y atractiva de 2 o 3 frases.
-    Idea: "${prompt}"
-  `;
+ const promptCompleto = prompt;
 
   try {
     // Usamos el modelo ACTUAL: gemini-2.5-flash
