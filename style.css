@@ -1,11 +1,18 @@
-/* --- style.css CORREGIDO --- */
+/* --- style.css DEFINITIVO --- */
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   background: #0d1117;
   color: #e6edf3;
   line-height: 1.6;
+  /* Animación de entrada */
+  animation: fadeIn 1s ease-in;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+} 
 
 header {
   text-align: center;
@@ -14,13 +21,18 @@ header {
 
 h1 {
   font-size: 3em;
-  color: #58a6ff;
   margin-bottom: 10px;
+  /* Efecto Degradado Moderno */
+  background: linear-gradient(90deg, #58a6ff, #a371f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .subtitle {
   font-size: 1.2em;
   color: #8b949e;
+  margin-bottom: 20px;
 }
 
 section {
@@ -32,7 +44,7 @@ section {
 h2 {
   border-left: 4px solid #58a6ff;
   padding-left: 10px;
-  margin-bottom: 20px; /* Aumentado para más espacio */
+  margin-bottom: 20px;
 }
 
 .project-grid {
@@ -41,19 +53,34 @@ h2 {
   gap: 20px;
 }
 
+/* --- TARJETAS PRO (Con efecto Glow) --- */
 .project-card {
+  position: relative;
   background: #161b22;
   border: 1px solid #30363d;
   border-radius: 12px;
   padding: 20px;
-  transition: transform 0.2s ease, border-color 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  border-color: #58a6ff;
+  transform: translateY(-7px);
+  border-color: #a371f7;
+  box-shadow: 0 10px 30px -10px rgba(163, 113, 247, 0.3);
 }
 
+.project-card h3 {
+  margin-top: 0;
+  color: #e6edf3;
+}
+
+.project-card p {
+  color: #8b949e;
+}
+
+/* --- FORMULARIOS --- */
 form {
   display: flex;
   flex-direction: column;
@@ -68,40 +95,37 @@ input, textarea {
   color: #e6edf3;
   padding: 10px;
   font-size: 1em;
+  width: 100%; /* Asegura que ocupen el espacio */
+  box-sizing: border-box; /* Evita que el padding rompa el ancho */
 }
 
-button {
-  background: #58a6ff;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  padding: 12px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background: #1f6feb;
-}
-
-/* --- ESTILO DE BOTÓN UNIFICADO --- */
-.contact-btn {
+/* --- BOTONES UNIFICADOS (Estilo Upwork/GitHub) --- */
+button, .contact-btn {
   display: inline-block;
-  background: #58a6ff;
+  background: linear-gradient(90deg, #238636, #2ea043);
+  box-shadow: 0 4px 15px rgba(46, 160, 67, 0.4);
   color: white;
   padding: 12px 25px;
-  border-radius: 10px;
-  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
   font-weight: bold;
-  font-size: 16px; /* Ajustado para consistencia */
-  margin-top: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
   transition: background 0.3s, transform 0.2s;
 }
 
-.contact-btn:hover {
-  background: #1f6feb;
-  transform: scale(1.05); /* efecto de “crecer” al pasar el mouse */
+button:hover, .contact-btn:hover {
+  background: linear-gradient(90deg, #2ea043, #3fb950);
+  transform: scale(1.05) translateY(-2px);
+}
+
+button:disabled {
+  background: #30363d;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
 }
 
 footer {
@@ -110,4 +134,14 @@ footer {
   font-size: 0.9em;
   color: #8b949e;
   border-top: 1px solid #30363d;
+  margin-top: 50px;
+}
+
+/* Enlaces de pie de página */
+footer a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
 }
