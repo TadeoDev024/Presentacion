@@ -23,7 +23,7 @@ async function generarTexto() {
   try {
     // 3. ¡LA PARTE CLAVE! Llamamos a NUESTRA función de Netlify, no a Google.
     // Esta URL es el "endpoint" estándar de Netlify para una función llamada "generate".
-    const response = await fetch("/.netlify/functions/generate.js", {
+    const response = await fetch("/.netlify/functions/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
