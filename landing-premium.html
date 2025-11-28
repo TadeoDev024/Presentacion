@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaaSify - Landing Page Premium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* --- ESTILOS PREMIUM (Inline para facilitar la copia) --- */
+    :root {
+      --primary: #6366f1; /* Indigo moderno */
+      --secondary: #a855f7; /* Violeta */
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --glass: rgba(255, 255, 255, 0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    
+    body {
+      background: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
+    }
+
+    /* Fondo animado */
+    .bg-gradient {
+      position: absolute;
+      top: -20%; left: -20%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--primary), transparent 70%);
+      opacity: 0.3;
+      filter: blur(80px);
+      z-index: -1;
+      animation: float 10s infinite ease-in-out;
+    }
+    .bg-gradient.two { top: 40%; left: 60%; background: var(--secondary); animation-delay: 2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, -30px); }
+    }
+
+    /* Navbar */
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 50px;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-size: 1.5rem; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; color: transparent; }
+    .nav-btn {
+      padding: 10px 20px;
+      background: var(--light);
+      color: var(--dark);
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .nav-btn:hover { transform: scale(1.05); }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero p { font-size: 1.2rem; color: #94a3b8; margin-bottom: 40px; }
+    
+    .cta-group { display: flex; gap: 15px; justify-content: center; }
+    .btn {
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4); }
+    .btn-primary:hover { background: #4f46e5; transform: translateY(-3px); }
+    .btn-outline { border: 1px solid rgba(255,255,255,0.2); color: white; }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+    /* Pricing Section */
+    .pricing { padding: 80px 20px; text-align: center; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 50px auto 0;
+    }
+    .card {
+      background: var(--glass);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+    .price { font-size: 3rem; font-weight: 800; margin: 20px 0; }
+    .price span { font-size: 1rem; color: #94a3b8; font-weight: 400; }
+    .features-list { list-style: none; text-align: left; margin: 30px 0; color: #cbd5e1; }
+    .features-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .features-list li::before { content: "✓"; color: var(--primary); }
+
+    /* Modal (Interactivo) */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex; justify-content: center; align-items: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+    .modal {
+      background: #1e293b;
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%; max-width: 400px;
+      text-align: center;
+      transform: scale(0.8); transition: transform 0.3s;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .modal-overlay.active .modal { transform: scale(1); }
+    
+    footer { text-align: center; padding: 50px; color: #64748b; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; }
+    .back-link { color: var(--primary); text-decoration: none; font-weight: 600; margin-top: 20px; display: inline-block;}
+
+    /* Responsive */
+    @media(max-width: 600px) { h1 { font-size: 2.5rem; } }
+  </style>
+</head>
+<body>
+
+  <div class="bg-gradient"></div>
+  <div class="bg-gradient two"></div>
+
+  <nav>
+    <div class="logo">SaaSify.</div>
+    <button class="nav-btn" onclick="openModal()">Empezar</button>
+  </nav>
+
+  <section class="hero">
+    <h1>Automatiza tu futuro con <span style="color:var(--primary)">Inteligencia</span></h1>
+    <p>La plataforma definitiva para gestionar tus proyectos sin esfuerzo. Diseño limpio, código rápido.</p>
+    <div class="cta-group">
+      <a href="#" class="btn btn-primary" onclick="openModal()">Probar Gratis</a>
+      <a href="#precios" class="btn btn-outline">Ver Planes</a>
+    </div>
+  </section>
+
+  <section class="pricing" id="precios">
+    <h2>Planes Flexibles</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Starter</h3>
+        <div class="price">$0<span>/mes</span></div>
+        <ul class="features-list">
+          <li>1 Usuario</li>
+          <li>5 Proyectos</li>
+          <li>Soporte Básico</li>
+        </ul>
+        <a href="#" class="btn btn-outline" style="width:100%; display:block;">Elegir</a>
+      </div>
+
+      <div class="card" style="border-color: var(--primary); background: rgba(99, 102, 241, 0.1);">
+        <div style="position:absolute; top:0; right:0; background:var(--primary); padding:5px 15px; font-size:0.8rem; border-bottom-left-radius:10px;">POPULAR</div>
+        <h3>Pro</h3>
+        <div class="price">$29<span>/mes</span></div>
+        <ul class="features-list">
+          <li>Usuarios Ilimitados</li>
+          <li>IA Integrada ⚡</li>
+          <li>Soporte 24/7</li>
+          <li>Analíticas Avanzadas</li>
+        </ul>
+        <a href="#" class="btn btn-primary" style="width:100%; display:block;" onclick="openModal()">Comenzar Ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 SaaSify - Design by Tadeo Garcia</p>
+    <a href="index.html" class="back-link">← Volver al Portafolio Principal</a>
+  </footer>
+
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <h2 style="margin-bottom: 15px;">🚀 ¡Estás a un paso!</h2>
+      <p style="color:#94a3b8; margin-bottom: 25px;">Esta es una demostración de un modal interactivo. En un proyecto real, aquí iría un formulario de registro o Stripe.</p>
+      <button class="btn btn-primary" onclick="closeModal()">Entendido, cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    // Lógica del Modal (JavaScript Simple)
+    const modal = document.getElementById('modal');
+
+    function openModal() {
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+    }
+
+    // Cerrar si clic fuera del modal
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
+
+</body>
+</html>
