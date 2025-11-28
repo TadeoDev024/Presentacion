@@ -20,15 +20,13 @@ async function generarTexto() {
   boton.disabled = true;
   resultado.innerHTML = "🤖 Conectando con el servidor... dame un segundo...";
 
-  try {
-    // 3. ¡LA PARTE CLAVE! Llamamos a NUESTRA función de Netlify, no a Google.
-    // Esta URL es el "endpoint" estándar de Netlify para una función llamada "generate".
-    const response = await fetch("/.netlify/functions/generate", {
+ try {
+    // CAMBIO AQUÍ: Ahora apuntamos a "/api/generate"
+    const response = await fetch("/api/generate", { 
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      // Enviamos el prompt en el body
       body: JSON.stringify({
         prompt: ideaTexto
       })
