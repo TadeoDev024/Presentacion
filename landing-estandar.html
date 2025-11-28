@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultora Apex - Soluciones Profesionales</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- ESTILOS ESTÁNDAR (Clean & Corporate) --- */
+    :root {
+      --primary: #0056b3; /* Azul Corporativo */
+      --secondary: #f8f9fa; /* Gris muy claro */
+      --text: #333;
+      --accent: #ffc107; /* Amarillo para detalles */
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+    
+    body { color: var(--text); line-height: 1.6; }
+
+    /* Navbar */
+    nav {
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      padding: 15px 5%;
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+    .menu a { text-decoration: none; color: var(--text); margin-left: 20px; font-weight: 500; transition: color 0.3s; }
+    .menu a:hover { color: var(--primary); }
+    .btn-contact { background: var(--primary); color: white !important; padding: 8px 20px; border-radius: 4px; }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,86,179,0.8), rgba(0,86,179,0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover; background-position: center;
+      color: white; padding: 100px 5%; text-align: center;
+    }
+    .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+    .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; opacity: 0.9; }
+    .btn-hero { background: var(--accent); color: #333; padding: 12px 30px; text-decoration: none; font-weight: 700; border-radius: 4px; display: inline-block; transition: transform 0.2s; }
+    .btn-hero:hover { transform: translateY(-2px); background: #e0a800; }
+
+    /* Servicios (Grid) */
+    .section { padding: 80px 5%; }
+    .bg-light { background: var(--secondary); }
+    .title { text-align: center; margin-bottom: 50px; }
+    .title h2 { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
+    .title span { width: 50px; height: 3px; background: var(--accent); display: block; margin: 0 auto; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s; }
+    .card:hover { transform: translateY(-5px); }
+    .icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+
+    /* Contacto */
+    .contact-container { max-width: 600px; margin: 0 auto; }
+    form { display: flex; flex-direction: column; gap: 15px; }
+    input, textarea { padding: 12px; border: 1px solid #ddd; border-radius: 4px; width: 100%; font-size: 1rem; }
+    input:focus, textarea:focus { border-color: var(--primary); outline: none; }
+    button[type="submit"] { background: var(--primary); color: white; border: none; padding: 15px; font-size: 1rem; cursor: pointer; border-radius: 4px; transition: background 0.3s; }
+    button[type="submit"]:hover { background: #004494; }
+
+    /* Footer */
+    footer { background: #333; color: white; text-align: center; padding: 40px 5%; margin-top: auto; }
+    .back-link { color: var(--accent); text-decoration: none; margin-top: 10px; display: inline-block; }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      nav { flex-direction: column; gap: 15px; }
+      .menu { display: flex; flex-direction: column; gap: 10px; text-align: center; }
+      .menu a { margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Apex Consultora</div>
+    <div class="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto" class="btn-contact">Contactar</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="inicio">
+    <h1>Impulsamos el Crecimiento de tu Negocio</h1>
+    <p>Estrategias digitales y consultoría de alto nivel para empresas que buscan resultados reales.</p>
+    <a href="#contacto" class="btn-hero">Solicitar Asesoría</a>
+  </header>
+
+  <section class="section bg-light" id="servicios">
+    <div class="title">
+      <h2>Nuestros Servicios</h2>
+      <span></span>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="icon">📈</span>
+        <h3>Consultoría Estratégica</h3>
+        <p>Análisis de mercado y optimización de procesos para maximizar tu rentabilidad.</p>
+      </div>
+      <div class="card">
+        <span class="icon">💻</span>
+        <h3>Desarrollo Web</h3>
+        <p>Sitios web corporativos rápidos, seguros y adaptados a dispositivos móviles.</p>
+      </div>
+      <div class="card">
+        <span class="icon">📢</span>
+        <h3>Marketing Digital</h3>
+        <p>Campañas de publicidad efectiva en Google y Redes Sociales.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contacto">
+    <div class="title">
+      <h2>Hablemos de tu Proyecto</h2>
+      <span></span>
+    </div>
+    <div class="contact-container">
+      <form id="contactForm">
+        <input type="text" placeholder="Tu Nombre" required>
+        <input type="email" placeholder="Tu Email Corporativo" required>
+        <textarea rows="5" placeholder="¿En qué podemos ayudarte?" required></textarea>
+        <button type="submit">Enviar Mensaje</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Apex Consultora - Todos los derechos reservados.</p>
+    <a href="index.html" class="back-link">← Volver al Portafolio de Tadeo</a>
+  </footer>
+
+  <script>
+    // Pequeño script para simular el envío del formulario
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button');
+      const originalText = btn.innerText;
+      
+      btn.innerText = "¡Enviado Correctamente! ✅";
+      btn.style.background = "#28a745";
+      
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.style.background = "";
+        this.reset();
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
