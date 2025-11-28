@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot Inteligente - Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos específicos para el Chat */
+    .chat-container {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      max-width: 500px; /* Más angosto, tipo celular */
+      margin: 0 auto;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .chat-window {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 10px 15px;
+      border-radius: 15px;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+
+    .message.user {
+      align-self: flex-end;
+      background: #238636; /* Verde usuario */
+      color: white;
+      border-bottom-right-radius: 2px;
+    }
+
+    .message.bot {
+      align-self: flex-start;
+      background: #30363d; /* Gris bot */
+      color: #e6edf3;
+      border-bottom-left-radius: 2px;
+      border: 1px solid #58a6ff;
+    }
+
+    .input-area {
+      padding: 15px;
+      background: #0d1117;
+      border-top: 1px solid #30363d;
+      display: flex;
+      gap: 10px;
+    }
+
+    .input-area input {
+      flex: 1;
+      margin: 0; /* Override del css global */
+    }
+
+    .input-area button {
+      padding: 10px 20px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header style="padding-bottom: 20px;">
+    <h1>🤖 TadeoBot</h1>
+    <p class="subtitle">Asistente de Ventas 24/7 (Powered by Gemini)</p>
+  </header>
+
+  <section>
+    <div class="chat-container">
+      <div class="chat-window" id="chatWindow">
+        <div class="message bot">
+          Hola 👋 Soy el asistente virtual de Tadeo. ¿Te interesa saber nuestros precios o servicios?
+        </div>
+      </div>
+      
+      <form class="input-area" id="chatForm">
+        <input type="text" id="userMsg" placeholder="Escribe aquí..." autocomplete="off">
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html" class="back-link">← Volver al portafolio</a>
+  </footer>
+
+  <script>
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('userMsg');
+    const chatWindow = document.getElementById('chatWindow');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text) return;
+
+      // 1. Agregar mensaje del usuario
+      addMessage(text, 'user');
+      input.value = '';
+
+      // 2. Mostrar "Escribiendo..." (Truco visual)
+      const loadingId = addMessage('Escribiendo...', 'bot', true);
+
+      try {
+        // 3. Llamar a la API
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: text })
+        });
+        
+        const data = await res.json();
+        
+        // 4. Reemplazar "Escribiendo..." con la respuesta real
+        const loadingDiv = document.getElementById(loadingId);
+        if (loadingDiv) loadingDiv.remove(); // Borramos el loading
+        
+        if (data.error) {
+          addMessage('❌ Error: ' + data.error, 'bot');
+        } else {
+          addMessage(data.texto, 'bot');
+        }
+
+      } catch (err) {
+        addMessage('Error de conexión', 'bot');
+      }
+    });
+
+    function addMessage(text, sender, isLoading = false) {
+      const div = document.createElement('div');
+      div.classList.add('message', sender);
+      div.innerText = text;
+      
+      if (isLoading) {
+        div.id = 'loading-' + Date.now();
+        div.style.opacity = '0.7';
+        div.style.fontStyle = 'italic';
+      }
+
+      chatWindow.appendChild(div);
+      chatWindow.scrollTop = chatWindow.scrollHeight; // Auto-scroll al final
+      return div.id;
+    }
+  </script>
+</body>
+</html>
